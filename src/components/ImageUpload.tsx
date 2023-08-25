@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
   Button,
   Container,
@@ -9,7 +8,7 @@ import {
   createTheme,
   ThemeProvider,
 } from '@mui/material';
-import { uploadImage } from '../integrations/api';
+import axios from 'axios';
 import './ImageUpload.css';
 
 const theme = createTheme({
@@ -56,13 +55,14 @@ const ImageUpload: React.FC = () => {
       const reader = new FileReader();
       reader.onload = async (e) => {
         if (e.target?.result) {
-          const base64Image = e.target.result.toString();
-
+          const base64Image = e.target.result.toString().split(',')[1];
           try {
-            await uploadImage(base64Image);
+            const response = await axios.post(
+              'http://localhost:3010/upload',
+              base64Image
+            );
             console.log('Image uploaded successfully.');
 
-            const response = await axios.get('localhost:3010/upload');
             const data = response.data;
             setSignatureBase64(data);
           } catch (error) {
