@@ -62,7 +62,7 @@ const ImageUpload: React.FC = () => {
             await uploadImage(base64Image);
             console.log('Image uploaded successfully.');
 
-            const response = await axios.get('backend-url/assinatura');
+            const response = await axios.get('localhost:3010/upload/assinatura');
             const data = response.data;
             setSignatureBase64(data);
           } catch (error) {
