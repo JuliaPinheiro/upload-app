@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Paper } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import axios from 'axios';
 
 const ImageUpload: React.FC = () => {
@@ -17,6 +17,7 @@ const ImageUpload: React.FC = () => {
       reader.onload = async (e) => {
         if (e.target?.result) {
           const base64Image = e.target.result.toString();
+          //todo
           console.log('base64', base64Image);
           try {
             await axios.post('/backend/upload', { image: base64Image });
@@ -31,7 +32,7 @@ const ImageUpload: React.FC = () => {
   };
 
   return (
-    <Container
+    <div
       style={{
         display: 'flex',
         justifyContent: 'center',
@@ -65,7 +66,7 @@ const ImageUpload: React.FC = () => {
           Enviar
         </Button>
       </Paper>
-    </Container>
+    </div>
   );
 };
 

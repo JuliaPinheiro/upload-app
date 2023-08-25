@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import React from 'react';
 import ImageUpload from './components/ImageUpload';
 
