@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Container, Paper } from '@mui/material';
 import axios from 'axios';
 
 const ImageUpload: React.FC = () => {
@@ -15,8 +16,8 @@ const ImageUpload: React.FC = () => {
       const reader = new FileReader();
       reader.onload = async (e) => {
         if (e.target?.result) {
-          const base64Image = e.target.result.toString();  
-          console.log(base64Image);
+          const base64Image = e.target.result.toString();
+          console.log('base64', base64Image);
           try {
             await axios.post('/backend/upload', { image: base64Image });
             console.log('Image uploaded successfully.');
@@ -30,14 +31,41 @@ const ImageUpload: React.FC = () => {
   };
 
   return (
-    <div>
-      <input
-        type='file'
-        accept='.jpg,.jpeg,.png'
-        onChange={handleImageChange}
-      />
-      <button onClick={handleUpload}>Upload Image</button>
-    </div>
+    <Container
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <Paper
+        elevation={3}
+        style={{
+          padding: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '8px',
+        }}
+      >
+        <input
+          accept='.jpg,.jpeg,.png'
+          onChange={handleImageChange}
+          style={{ display: 'none' }}
+          id='image-upload-input'
+          type='file'
+        />
+        <label htmlFor='image-upload-input'>
+          <Button variant='contained' component='span'>
+            Buscar imagem
+          </Button>
+        </label>
+        <Button variant='contained' onClick={handleUpload}>
+          Enviar
+        </Button>
+      </Paper>
+    </Container>
   );
 };
 
