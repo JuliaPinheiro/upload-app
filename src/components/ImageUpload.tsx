@@ -33,7 +33,7 @@ const ImageUpload: React.FC = () => {
       setTimeout(() => {
         setCurrentIndex(currentIndex + 1);
         setTypingEffect(textToType.substring(0, currentIndex + 1));
-      }, 100);
+      }, 70);
     } else {
       setTypingComplete(true);
     }
@@ -62,7 +62,7 @@ const ImageUpload: React.FC = () => {
             await uploadImage(base64Image);
             console.log('Image uploaded successfully.');
 
-            const response = await axios.get('localhost:3010/upload/assinatura');
+            const response = await axios.get('localhost:3010/upload');
             const data = response.data;
             setSignatureBase64(data);
           } catch (error) {
