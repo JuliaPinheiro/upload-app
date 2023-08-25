@@ -154,7 +154,7 @@ const ImageUpload: React.FC = () => {
             }}
           >
             <img
-              src={`data:image/png;base64,${signatureBase64}`}
+              src={signatureBase64}
               alt='Assinatura'
               style={{ maxWidth: '100%', maxHeight: '300px' }}
             />
