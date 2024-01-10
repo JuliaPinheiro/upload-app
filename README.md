@@ -8,7 +8,7 @@ Este programa é uma aplicação em React que demonstra uma solução para remov
 
 Clone este repositório em sua máquina local usando o seguinte comando:
 
-- git clone https://github.com/seu-usuario/nome-do-repositorio.git
+- git clone https://github.com/JuliaPinheiro/upload-app
 
 
 ### 2. Instalar Dependências
